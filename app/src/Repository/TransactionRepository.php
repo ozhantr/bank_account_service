@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Account;
 use App\Entity\Transaction;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -15,6 +16,12 @@ class TransactionRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Transaction::class);
     }
+
+    // TO DO
+    // public function getTransactionsByAccount(Account $account): array
+    // {
+    //     return $this->findBy(['account' => $account], ['createdAt' => 'DESC'], 50);
+    // }
 
     //    /**
     //     * @return Transaction[] Returns an array of Transaction objects
