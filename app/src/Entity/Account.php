@@ -8,7 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity]
-#[ORM\UniqueConstraint(name: 'uniq_user_account', columns: ['user_id'])]
+#[ORM\Table(name: 'accounts', uniqueConstraints: [
+    new ORM\UniqueConstraint(name: 'uniq_user_account', columns: ['user_id']),
+])]
 #[ORM\HasLifecycleCallbacks]
 class Account
 {
