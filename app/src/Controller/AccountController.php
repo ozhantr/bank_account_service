@@ -19,11 +19,19 @@ final class AccountController extends AbstractController
             return $this->json(['error' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
         }
 
+        $account = $user->getAccount();
+        if (null === $account) {
+            return $this->json(['error' => 'Account not found'], Response::HTTP_NOT_FOUND);
+        }
+
         return $this->json([
             'user' => [
                 'id' => (string) $user->getId(),
                 'email' => $user->getEmail(),
                 'createdAt' => $user->getCreatedAt()->format(\DATE_ATOM),
+            ],
+            'account' => [
+                'id' => (string) $account->getId(),
             ],
         ]);
     }
